@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Devarshi Doshi</title>
+  <link rel="icon" href="images/favicon.ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital@1&display=swap" rel="stylesheet">
+  <script src="https://use.fontawesome.com/16e0a25c1b.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300" rel="stylesheet">
+</head>
+<style>
+  #image {
+    background-image: url('images/bg1.jpg');
+  }
+
+  #container {
+    position: absolute;
+    height: 95vh;
+    width: 92vw;
+    top: 2vh;
+    left: 3vw;
+    z-index: -1;
+    border-radius: 10px;
+    background: white;
+    opacity: 0.7;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2),
+      -4px -4px 8px rgba(255, 255, 255, 0.2);
+  }
+
+  .main {
+    position: absolute;
+    height: 95vh;
+    width: 92vw;
+    top: 2vh;
+    left: 3vw;
+    z-index: 1;
+    border-radius: 10px;
+    background: transparent;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2),
+      -4px -4px 8px rgba(255, 255, 255, 0.2);
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  body,
+  html {
+    height: 100%;
+    overflow-y: hidden;
+  }
+
+  .bg {
+    background: url('images/bg3.jpg');
+
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+
+
+
+  .tabs {
+    position: fixed;
+    width: 92vw;
+    height: 8vh;
+    background-color: white;
+    border-radius: 10px;
+    padding-top: 14px;
+    padding-bottom: 10px;
+    z-index: 1;
+
+  }
+
+  @font-face {
+    font-family: 'yellowtailregular';
+    src: url('fonts/yellowtail-regular-webfont.woff2') format('woff2'),
+      url('fonts/yellowtail-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Beattingville';
+    src: url('./fonts/Beattingvile.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  .twitter {
+    z-index: 2;
+    left: 95vw;
+    top: 73vh;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+
+  }
+
+  .twitter>div {
+    width: 60px;
+  }
+
+  .twitter>div>a>img {
+    width: 60px;
+    height: auto;
+  }
+
+  .tab {
+    width: 85vw;
+    z-index: 2;
+    height: 15vh;
+    border-radius: 10px;
+    opacity: 1;
+  }
+
+
+  .typewrite {
+    text-decoration: none;
+    color: black;
+    font-size: 2em;
+
+    padding: 300px 20px 20px 40px;
+  }
+
+
+  input {
+    position: relative;
+    width: 50px;
+    z-index: 2;
+    left: 95vw;
+    top: 5vh;
+    transform: rotate(270deg);
+    height: 30px;
+    background-color: #3d3459;
+    border-radius: 60px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+  }
+
+  input::before {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    background-color: #817d96;
+    transform: scale(0.9);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: 0.5s;
+  }
+
+  input:checked::before {
+    left: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 20px 10px #699ba9, 0 0 25px 20px #303f52;
+  }
+
+
+  .container.on .threadEndShadow,
+  .container.on .threadShadow {
+    opacity: 1;
+  }
+
+  .container.on .threadEnd,
+  .container.on .thread {
+    animation: on 0.8s ease;
+  }
+
+  .container.on .threadEnd {
+    background-color: #695dff;
+  }
+
+  .topnav {
+    overflow: hidden;
+    background-color: #fff;
+  }
+
+  @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+  .topnav a {
+    float: right;
+    display: block;
+    color: #000000;
+    background-color: #fff;
+    font-weight: bold;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    margin-right: 5px;
+    border-radius: 10px;
+  }
+
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+
+  .topnav a.active {
+    background-color: grey;
+    color: white;
+  }
+
+  .topnav .icon {
+    display: none;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 96vw;
+    top: 81vh;
+    z-index: 3;
+    transform: translate(-50%, -50%);
+  }
+
+  ul li {
+    list-style: none;
+  }
+
+  ul li a {
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+    text-align: center;
+    line-height: 50px;
+    font-size: 35px;
+    margin: 10px 0px;
+    display: block;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    border: 3px solid #fff;
+    z-index: 1;
+  }
+
+  ul li a .icon {
+    position: relative;
+    color: #262626;
+    transition: .5s;
+    z-index: 3;
+  }
+
+  ul li a:hover .icon {
+    color: #fff;
+    transform: rotateY(360deg);
+  }
+
+  ul li a:before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #f00;
+    transition: .5s;
+    z-index: 2;
+  }
+
+  ul li a:hover:before {
+    top: 0;
+  }
+
+  ul li:nth-child(1) a:before {
+    background: #55acee;
+  }
+
+  ul li:nth-child(2) a:before {
+    background: #000000;
+  }
+
+  ul li:nth-child(3) a:before {
+    background: #0077b5;
+  }
+
+
+  .resimg {
+    width: 100%;
+    height: auto;
+    max-width: 300px;
+    float: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  .front {
+    width: 100%;
+
+    background-image: url("images/8.jpg");
+    background-size: 100% 120%;
+    background-repeat: no-repeat;
+
+  }
+
+  .zoomin img {
+    height: 250px;
+    width: 600px;
+    transition: all 2s ease;
+    /*-webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    -webkit-transition: .3s ease-in-out;
+    transition: 1s ease-in-out;*/
+
+  }
+
+  .zoomin video {
+    height: 250px;
+    width: 600px;
+    transition: all 2s ease;
+    /*-webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    -webkit-transition: .3s ease-in-out;
+    transition: 1s ease-in-out;*/
+
+  }
+
+  .zoomin img:hover {
+    width: 700px;
+    /*-webkit-filter: grayscale(0);
+    filter: grayscale(0);*/
+    height: 350px;
+
+  }
+
+  .zoomin video:hover {
+    width: 700px;
+    /*-webkit-filter: grayscale(0);
+    filter: grayscale(0);*/
+    height: 350px;
+
+  }
+
+  .skills {
+    width: 300px;
+    height: 150px;
+    align-items: left;
+    align-content: left;
+    display: inline-block;
+    border: 1px solid #000;
+  }
+
+  .certi {
+    width: 25vw;
+    height: auto;
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1px solid #000;
+    padding: 10px;
+    display: inline-block;
+    margin: 10px;
+  }
+
+  .certi1 {
+    width: 25vw;
+    height: auto;
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1px solid #000;
+    padding: 10px;
+    display: inline-block;
+    margin: 10px;
+  }
+
+  .certi2 {
+    width: 25vw;
+    height: auto;
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1px solid #000;
+    padding: 10px;
+    display: inline-block;
+    margin: 10px;
+  }
+
+  .footer {
+    width: 100%;
+    height: auto;
+    background-color: #000;
+  }
+  .footer1 {
+    width: 100%;
+    height: auto;
+    background-color: rgba(37, 36, 36, 0.85);
+  }
+
+  @media screen and (max-width: 768px) {
+
+    .certi {
+      width: 80vw;
+      height: auto;
+      background-color: #fff;
+      border-radius: 10px;
+      border: 1px solid #000;
+      padding: 10px;
+      display: inline-block;
+      margin: 10px;
+    }
+
+    .certi1 {
+      width: 80vw;
+      height: auto;
+      background-color: #fff;
+      border-radius: 10px;
+      border: 1px solid #000;
+      padding: 10px;
+      display: inline-block;
+      margin: 10px;
+    }
+
+    .certi2 {
+      width: 80vw;
+      height: auto;
+      background-color: #fff;
+      border-radius: 10px;
+      border: 1px solid #000;
+      padding: 10px;
+      display: inline-block;
+      margin: 10px;
+    }
+
+
+    .zoomin img {
+      height: auto;
+      width: 80vw;
+      -webkit-filter: grayscale(0%);
+      filter: grayscale(0%);
+      -webkit-transition: .3s ease-in-out;
+      transition: 1s ease-in-out;
+
+    }
+
+    .zoomin video {
+      height: auto;
+      width: 80vw;
+      transition: all 2s ease;
+      -webkit-filter: grayscale(0%);
+      filter: grayscale(0%);
+      -webkit-transition: .3s ease-in-out;
+      transition: 1s ease-in-out;
+
+    }
+
+    .zoomin img:hover {
+      height: auto;
+      width: 80vw;
+      /*width: 700px;
+    -webkit-filter: grayscale(0);
+    filter: grayscale(0);
+    height: 350px;*/
+
+    }
+
+    .zoomin video:hover {
+      height: auto;
+      width: 80vw;
+      /*width: 700px;
+    -webkit-filter: grayscale(0);
+    filter: grayscale(0);
+    height: 350px;*/
+
+    }
+
+    .tabs {
+      position: fixed;
+      width: 89vw;
+      height: 8vh;
+      background-color: white;
+      border-radius: 10px;
+      padding-top: 14px;
+      padding-bottom: 10px;
+      z-index: 1;
+
+    }
+
+    .wall {
+      position: absolute;
+      width: 89vw;
+      height: 8vh;
+      background: white;
+      border-radius: 10px;
+      padding-top: 14px;
+      padding-bottom: 10px;
+      z-index: 1;
+
+    }
+
+
+
+    .twitter {
+      position: absolute;
+      z-index: 2;
+      left: 93vw;
+      top: 82vh;
+      display: flex;
+      flex-direction: column;
+
+    }
+
+    .twitter>div {
+      width: 30px;
+      height: 30px;
+    }
+
+    .twitter>div>a>img {
+      width: 30px;
+      height: 30px;
+    }
+
+    #container {
+      position: absolute;
+      height: 95vh;
+      width: 89vw;
+      top: 2vh;
+      left: 3vw;
+      z-index: -1;
+      border-radius: 10px;
+      background: white;
+      opacity: 0.7;
+      box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2),
+        -4px -4px 8px rgba(255, 255, 255, 0.2);
+    }
+
+    #image {
+      background-image: url('images/bg1.jpg');
+    }
+
+    .main {
+      position: absolute;
+      height: 95vh;
+      width: 89vw;
+      top: 2vh;
+      left: 3vw;
+      z-index: 1;
+      border-radius: 10px;
+      background: transparent;
+      box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2),
+        -4px -4px 8px rgba(255, 255, 255, 0.2);
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      left: 92vw;
+      top: 84vh;
+      z-index: 3;
+      transform: translate(-50%, -50%);
+    }
+
+    ul li {
+      list-style: none;
+    }
+
+    ul li a {
+      width: 30px;
+      height: 30px;
+      background-color: #fff;
+      text-align: center;
+      line-height: 30px;
+      font-size: 20px;
+      margin: 5px 0px;
+      display: block;
+      border-radius: 50%;
+      position: relative;
+      overflow: hidden;
+      border: 3px solid #fff;
+      z-index: 1;
+    }
+
+    .topnav a {
+      display: none;
+    }
+
+    .topnav a.icon {
+      float: right;
+      display: block;
+      position: relative;
+    }
+
+    .topnav.responsive {
+      position: relative;
+    }
+
+    .topnav.responsive .icon {
+      float: right;
+      display: block;
+      border-radius: 10px;
+      position: relative;
+    }
+
+    .topnav.responsive a {
+      float: none;
+      display: block;
+
+      border-radius: 0px;
+      text-align: left;
+    }
+
+    input {
+      position: absolute;
+      width: 50px;
+      z-index: 2;
+      left: 90vw;
+      top: 5vh;
+      transform: rotate(90deg);
+      height: 30px;
+      background-color: #3d3459;
+      border-radius: 60px;
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+      -webkit-appearance: none;
+      outline: none;
+      cursor: pointer;
+      transition: all 0.5s ease-in-out;
+    }
+
+    input::before {
+      content: "";
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      top: 0;
+      left: 0;
+      background-color: #817d96;
+      transform: scale(0.9);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: 0.5s;
+    }
+
+    input:checked::before {
+      left: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px 5px #699ba9, 0 0 15px 10px #303f52;
+    }
+
+
+    .container.on .threadEndShadow,
+    .container.on .threadShadow {
+      opacity: 1;
+    }
+
+    .container.on .threadEnd,
+    .container.on .thread {
+      animation: on 0.8s ease;
+    }
+
+    .container.on .threadEnd {
+      background-color: #695dff;
+    }
+  }
+</style>
+
+<body id="image">
+
+  <div id="container"></div>
+  <div class="main">
+    <div class="tabs">
+      <font face="yellowtailregular" size="6em">&nbsp; Devarshi Doshi 💻⭐</font>
+      <span class="topnav" id="myTopnav">
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+          <i class="fa fa-bars"></i>
+        </a>
+        <a href="#certificates">Certificates</a>
+        <a href="#work">Works</a>
+        <a href="#home">Home</a>
+      </span>
+
+
+    </div>
+    <a name="home"></a><br><br><br><br><br>
+
+    <div class="front">
+      <br><br><br><br>
+      <img src="images/Me.png" class="resimg">
+      <center>
+
+        <div style="opacity: 1;">
+          <h2>
+            <font face="Comic Sans MS, cursive" size="18">
+              <span style="background-color: #FFFFff; opacity: 0.7;color: #000000;"> I'm | </font>
+            <font face="Comic Sans MS, cursive"><a href="" class="typewrite" data-period="1000"
+                data-type='[ "Devarshi !", "Creative !", "Designer !", "Developer !" ,"Coder !"]'> <span
+                  class="wrap"></span>
+              </a>
+            </font>
+            </span>
+          </h2>
+        </div> <br>
+      </center>
+    </div>
+    <center>
+
+      <br><br>
+
+
+      <br><br>
+      <font face="'Montserrat',sans serif,'Lora'" align="center" size="6" style="font-weight:800;">| ABOUT ME |</font>
+      <br><br><br>
+      <div style="margin-left:5vw;margin-right: 5vw;text-align: left;">
+        <font style="font-family: 'Alegreya Sans', sans-serif;" align="left" size="5px">
+
+          Hello everyone, this is me - <b>Devarshi Doshi</b>. Introducing myself, I am a First year Computer Science
+          Engineering student.<br><br>
+          I really enjoy programmming and always love to be learning something new. I spend much of my free time working
+          on programming projects and I have experience working for a non-profit organization on a web development team
+          as a front-end developer.<br><br> I am interested in gaining experience in developer roles of any
+          kind.<br><br><br>
+          <center>Confident, Self Reliant, Coder.</center>
+        </font>
+      </div>
+      <br><br><br>
+      <font face="'Montserrat',sans serif,'Lora'" align="center" size="6" style="font-weight:800;">| SKILLS |</font>
+      <br><br>
+
+      <table align="center" border="0">
+        <tr height="80">
+          <td align="center" width="80"><i class="fab fa-html5 fa-3x" style="vertical-align: middle;"></i></td>
+          <td width="200"> <b>HTML</b></td>
+          <td align="center" width="80"><i class="fab fa-js fa-3x" style="vertical-align: middle;"></i></td>
+          <td> <b>JAVASCRIPT</b></td>
+        </tr>
+        <tr height="80">
+          <td align="center"><i class="fab fa-css3 fa-3x" style="vertical-align: middle;"></i></td>
+          <td style="padding-left:40;"> <b>CSS</b></td>
+          <td align="center"><i class="fas fa-database fa-3x" style="vertical-align: middle;"></i></td>
+          <td padding-left="20"> <b>MYSQL</b></td>
+        </tr>
+        <a name="work"></a>
+        <tr height="80">
+          <td align="center"><i class="fab fa-java fa-3x" style="vertical-align: middle;"></i></td>
+          <td> <b>JAVA</b></td>
+          <td align="center"><i class="fab fa-php fa-3x" style="vertical-align: middle;"></i></td>
+          <td> <b>php</b></td>
+        </tr>
+      </table></b>
+      <br><br>
+      <font face="'Montserrat',sans serif,'Lora'" align="center" size="6" style="font-weight:800;">| WORK SAMPLES |
+      </font>
+      <br>
+      <br>
+      <br>
+      <div class="zoomin">
+
+        <img src="images/mywork.jpg">&nbsp;&nbsp;&nbsp;
+        <img src="images/mywork1.jpg"><br><br>
+        <a href="https://codepen.io/DoshiDevarshi/pen/ExPpxBw"><video autoplay muted loop src="images/Double Slider.mp4"
+          style="background: linear-gradient(135deg,#F07886,#EDD1CB);"></video></a>&nbsp;&nbsp;&nbsp;
+        <img src="images/mywork3.jpg"><br><br>
+        <a href="https://codepen.io/DoshiDevarshi/pen/rNeVoOP"><img src="images/iron man.PNG"></a>&nbsp;&nbsp;&nbsp;
+        <a href="https://codepen.io/DoshiDevarshi/pen/LYGmJGq"><img src="images/Doremon.PNG"></a><br><br>
+        <a href="https://codepen.io/DoshiDevarshi/pen/zYqqxeb"><video autoplay muted loop src="images/Word Counter.mp4" type="video/mp4"
+          style="background: linear-gradient(135deg,#FA991C,#FFD379);"></video></a> &nbsp;&nbsp;&nbsp;
+        <a href="https://codepen.io/DoshiDevarshi/pen/zYrMNZX"><video autoplay muted loop src="images/LOC.mp4" style="background-color: #CCD0D7;"></video></a>
+
+      </div>
+      <a name="certificates"></a>
+      <br><br>
+
+      <font face="'Montserrat',sans serif,'Lora'" align="center" size="6" style="font-weight:800;"><a name="work"></a>|
+        CERTIFICATES |</font><br><br>
+
+      <font style="font-family: 'Alegreya Sans', sans-serif;" size="5px">
+        <div class="certi">
+          <a href="CDC 2018.jpg"><img src="images/CDC 2018.jpg" width="100%" height="auto" alt=""></a><br>Secured 1st Position
+          in CDC 2018 CSI Vadodara
+          Chapter For Web Designing</div>
+        <div class="certi1">
+          <a href="CDC 2017.jpg"><img src="images/CDC 2017.jpg" width="100%" height="auto" alt=""></a><br>Secured 2nd Position
+          in CDC
+          2017 CSI Vadodara Chapter For Web Designing</div>
+        <div class="certi2">
+          <a href="CDC 2016.jpg"><img src="images/CDC 2016.jpg" width="100%" height="auto" alt=""></a><br>Secured 2nd Position
+          in CDC
+          2016 CSI Vadodara Chapter For Web Designing</div>
+
+
+
+      </font><br><br>
+
+      <div class="footer">
+        <br>
+
+        <font face="'Montserrat',sans serif,'Lora'" align="center" size="6" style="font-weight:800; color:white;"><a
+            name="work"></a>|
+          CONTACT ME |</font><br><br>
+        <font style="font-family: 'Alegreya Sans', sans-serif;" size="5px" color="#ffffff">
+          <li class="fas fa-envelope"></li>&nbsp;Email: &nbsp; <a href="mailto:devarshidoshi007@gmail.com"
+            style="color: #ffffff;text-decoration: none;">devarshidoshi007@gmail.com</a><br>
+          CATCH ME HERE: 👉<br><br>
+          <div class="footer1">
+            2020 &nbsp;&nbsp; © &nbsp;&nbsp; Devarshi Doshi
+          </div>
+
+
+        </font>
+      </div>
+    </center>
+  </div>
+  <input type="checkbox" class="switchBtn" checked> 
+  </div>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+    integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous">
+    </script>
+
+  <ul>
+    <li>
+      <a href="https://twitter.com/DoshiDevarshi"><i class="fab fa-twitter icon"></i></a>
+    </li>
+    <li>
+      <a href="#"><i class="fab fa-github icon"></i></a></li>
+    <li>
+      <a href="https://www.linkedin.com/in/devarshi-doshi-45571a13b/"><i class="fab fa-linkedin-in icon"></i></a></li>
+  </ul>
+  <!--<div class="twitter">
+    <div><a href="https://twitter.com/DoshiDevarshi"><img src="twitter1.png" class="twitter1"></a><br></div>
+    <div><a href=""><img src="github.png" class="twitter1"></a><br></div>
+    <div><a href=""><img src="linkedin.png" class="twitter1"></a></div>
+  </div>-->
+  <script>
+    var TxtType = function (el, toRotate, period) {
+      this.toRotate = toRotate;
+      this.el = el;
+      this.loopNum = 0;
+      this.period = parseInt(period, 10) || 1000;
+      this.txt = '';
+      this.tick();
+      this.isDeleting = false;
+    };
+
+    TxtType.prototype.tick = function () {
+      var i = this.loopNum % this.toRotate.length;
+      var fullTxt = this.toRotate[i];
+
+      if (this.isDeleting) {
+        this.txt = fullTxt.substring(0, this.txt.length - 1);
+      } else {
+        this.txt = fullTxt.substring(0, this.txt.length + 1);
+      }
+
+      this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
+
+      var that = this;
+      var delta = 200 - Math.random() * 100;
+
+      if (this.isDeleting) { delta /= 2; }
+
+      if (!this.isDeleting && this.txt === fullTxt) {
+        delta = this.period;
+        this.isDeleting = true;
+      } else if (this.isDeleting && this.txt === '') {
+        this.isDeleting = false;
+        this.loopNum++;
+        delta = 500;
+      }
+
+      setTimeout(function () {
+        that.tick();
+      }, delta);
+    };
+
+    function myFunction() {
+      var x = document.getElementById("myTopnav");
+      if (x.className === "topnav") {
+        x.className += " responsive";
+      } else {
+        x.className = "topnav";
+      }
+    }
+
+    const switchBtn = document.querySelector(".switchBtn");
+    let tabs = document.querySelector(".tabs");
+    let container = document.getElementById("container");
+    let main = document.querySelector(".main");
+    var certi = document.getElementsByClassName('certi')[0];
+    var certi1 = document.getElementsByClassName('certi1')[0];
+    var certi2 = document.getElementsByClassName('certi2')[0];
+    window.onload = function () {
+
+      document.querySelector('.switchBtn').onclick = function () {
+        if (switchBtn.checked) {
+          tabs.style.backgroundColor = "#fff";
+          tabs.style.color = "#000";
+          container.style.backgroundColor = "#fff";
+          main.style.color = "#000";
+          certi.style.backgroundColor = "#fff";
+          certi1.style.backgroundColor = "#fff";
+          certi2.style.backgroundColor = "#fff";
+        } else {
+          tabs.style.backgroundColor = "#000";
+          tabs.style.color = "#fff";
+          container.style.backgroundColor = "#000";
+          certi.style.backgroundColor = "#000";
+          certi1.style.backgroundColor = "#000";
+          certi2.style.backgroundColor = "#000";
+          main.style.color = "#fff";
+        }
+      };
+
+      var elements = document.getElementsByClassName('typewrite');
+      for (var i = 0; i < elements.length; i++) {
+        var toRotate = elements[i].getAttribute('data-type');
+        var period = elements[i].getAttribute('data-period');
+        if (toRotate) {
+          new TxtType(elements[i], JSON.parse(toRotate), period);
+        }
+      }
+      // INJECT CSS
+      var css = document.createElement("style");
+      css.type = "text/css";
+      css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #000; background-color:#FFF; opacity:0.7;}";
+      document.body.appendChild(css);
+    };
+
+
+  </script>
+
+</body>
+
+</html>
